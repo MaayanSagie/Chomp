@@ -61,7 +61,7 @@ class Graphics:
         if player == -2:
             x,y = self.calc_base_pos(row_col)
             pygame.draw.rect(self.win,color ,pygame.Rect(x,y,SQUARE_SIZE,SQUARE_SIZE))
-
+            
        
         pygame.draw.circle(self.win,color , center, radius)
 

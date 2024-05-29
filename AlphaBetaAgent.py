@@ -4,8 +4,8 @@ from Chomp import Chomp
 from State import State
 MAXSCORE = 1000
 
-class MinMaxAgent:
-    def __init__(self, player, depth = 3, environment: Chomp = None):
+class AlphaBeta:
+    def __init__(self, player, depth = 2, environment: Chomp = None):
         self.player = player
         if self.player == 1:
             self.opponent = 2
@@ -16,7 +16,7 @@ class MinMaxAgent:
     
     def nothing():
         # def huristic_score_func(self, state, action):
-        #     next_state = Chomp.next_state(state, action)
+        #     next_state = Chomp.next_state(state, action) 
         #     rows , cols = ROWS , COLS
         #     row = 0
         #     black_count = -1
@@ -67,16 +67,18 @@ class MinMaxAgent:
             return score
             
 
-    def get_action(self, events, state: State,env=None):
+    def get_action(self, events=None, state: State = None,env=None, train=None):
         value, bestAction = self.minMax(state)
         return bestAction
 
     def minMax(self, state:State):
         visited = set()
         depth = 0
-        return self.max_value(state, visited, depth)
+        alpha = -MAXSCORE
+        beta = MAXSCORE
+        return self.max_value(state, visited, depth, alpha, beta)
         
-    def max_value (self, state:State, visited:set, depth):
+    def max_value (self, state:State, visited:set, depth, alpha, beta):
         
         value = -MAXSCORE
 
@@ -94,16 +96,20 @@ class MinMaxAgent:
             newState = self.environment.get_next_state(action=action, state=state)
             if newState not in visited:
                 # visited.add(newState)
-                newValue, newAction = self.min_value(newState, visited,  depth + 1)
+                newValue, newAction = self.min_value(newState, visited,  depth + 1, alpha, beta)
                 if newValue > value:
                     value = newValue
                     if value == 1000:
                         x=1
                     bestAction = action
+                    alpha = max(alpha, value)
+                if value >= beta:
+                    return value, bestAction
+                
 
         return value, bestAction 
 
-    def min_value (self, state:State, visited:set, depth):
+    def min_value (self, state:State, visited:set, depth, alpha, beta):
         
         value = MAXSCORE
 
@@ -119,10 +125,13 @@ class MinMaxAgent:
             newState = self.environment.get_next_state(action=action, state=state)
             if newState not in visited:
                 # visited.add(newState)
-                newValue, newAction = self.max_value(newState, visited,  depth + 1)
+                newValue, newAction = self.max_value(newState, visited,  depth + 1 , alpha, beta)
                 if newValue < value:
                     value = newValue
                     bestAction = action
+                    beta = min(beta, value)
+                if value <= alpha:
+                    return value, bestAction
 
         return value, bestAction 
 

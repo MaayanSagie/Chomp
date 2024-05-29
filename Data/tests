@@ -1,0 +1,96 @@
+file name: 1
+    epochs = 2000000
+    start_epoch = 0
+    C = 100
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player1
+    against random
+    best res= 98
+    eppochs stopped at= 10000
+
+file name: 2
+    epochs = 2000000
+    start_epoch = 0
+    C = 300
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player1
+    against random
+    best res= 100
+    eppochs stopped at= 1904000
+
+file name: 5
+    epochs = 2000000
+    start_epoch = 0
+    C = 100
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player1
+    against Alphabeta
+    best res= 100
+    eppochs stopped at= 14000
+
+file name: 6
+    epochs = 2000000
+    start_epoch = 0
+    C = 50
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player1
+    against Alphabeta
+    best res= 100
+    eppochs stopped at= 74000
+
+file name: 20
+    epochs = 2000000
+    start_epoch = 0
+    C = 100
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    1 against 2
+    best res= 100
+    eppochs stopped at= 36000
+
+file name: 10
+    epochs = 2000000
+    start_epoch = 0
+    C = 100
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player2
+    against random
+    best res= 
+    eppochs stopped at= 
+
+file name: 11
+    epochs = 2000000
+    start_epoch = 0
+    C = 100
+    learning_rate = 0.001
+    batch_size = 64
+    env = Chomp()
+    MIN_Buffer = 4000
+    
+    player2
+    against Alphabeta
+    best res= 100
+    eppochs stopped at= 
